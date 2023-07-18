@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Entry Box</title>
+	<style>
+		.entry-box {
+			display: inline-block;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 18px;
+			width: 150px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="entry-box" id="entry-box" contenteditable="true">0</div>
+	<script>
+		var entryBox = document.getElementById("entry-box");
+
+		// Set the initial value to 0
+		var value = 0;
+
+		// Add event listeners for mouse scrolling
+		entryBox.addEventListener("wheel", function(e) {
+			e.preventDefault();
+			if (e.deltaY < 0) {
+				value += 1000;
+			} else {
+				value -= 1000;
+			}
+			if (value < 0) {
+				value = 0;
+			} else if (value > 10000000) {
+				value = 10000000;
+			}
+			entryBox.innerHTML = value.toLocaleString();
+		});
+
+		// Add event listener for text input
+		entryBox.addEventListener("input", function(e) {
+			// Parse the input value as an integer and round to the nearest 1000, if it is a valid number
+			var newValue = entryBox.innerHTML.replace(/,/g, "");
+			if (newValue !== "") {
+				value = Math.round(parseInt(newValue) / 1000) * 1000;
+				if (value < 0) {
+					value = 0;
+				} else if (value > 10000000) {
+					value = 10000000;
+				}
+				entryBox.innerHTML = value.toLocaleString();
+			} else {
+				entryBox.innerHTML = "0";
+				value = 0;
+			}
+		});
+
+		// Add event listener for keypresses
+		entryBox.addEventListener("keypress", function(e) {
+			// Check if the key pressed is a number between 0 and 9 or the backspace key
+			if ((e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode === 8) {
+				// Prevent the default action of the keypress (i.e. typing the character)
+				e.preventDefault();
+				// Get the current value of the entry box
+				var currentValue = entryBox.innerHTML.replace(/,/g, "");
+				// Check if the current value is "0"
+				if (currentValue === "0") {
+					// If the current value is "0", set the value to the pressed number
+					value = parseInt(String.fromCharCode(e.keyCode));
+					entryBox.innerHTML = value.toLocaleString();
+				} else {
+// If the current value is not "0", append the pressed number to the current value
+var newValue = currentValue + String.fromCharCode(e.keyCode);
+// Parse the new value as an integer and round to the nearest 1000, if it is a valid number
+if (newValue !== "") {
+value = Math.round(parseInt(newValue) / 1000) * 1000;
+if (value < 0) {
+value = 0;
+} else if (value > 10000000) {
+value = 10000000;
+}
+entryBox.innerHTML = value.toLocaleString();
+}
+}
+}
+});
+	// Add event listener for keydowns
+	entryBox.addEventListener("keydown", function(e) {
+		// Check if the key pressed is the delete key
+		if (e.keyCode === 46) {
+			// Prevent the default action of the keydown (i.e. deleting the character)
+			e.preventDefault();
+			// Get the current value of the entry box
+			var currentValue = entryBox.innerHTML.replace(/,/g, "");
+			// If the current value is not "0", remove the last character from it
+			if (currentValue !== "0") {
+				// Remove the last character from the current value
+				var newValue = currentValue.slice(0, -1);
+				// If the new value is not empty, parse it as an integer and round to the nearest 1000
+				if (newValue !== "") {
+					value = Math.round(parseInt(newValue) / 1000) * 1000;
+					if (value < 0) {
+						value = 0;
+					} else if (value > 10000000) {
+						value = 10000000;
+					}
+					entryBox.innerHTML = value.toLocaleString();
+				} else {
+					// If the new value is empty, set the value to 0
+					entryBox.innerHTML = "0";
+					value = 0;
+				}
+			}
+		}
+	});
+</script>
+</body>
+</html>
+
+
+
+
+

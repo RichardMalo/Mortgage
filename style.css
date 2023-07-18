@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #form-container {
+    padding: 1px;
+  }
+  
+  #mortgageForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1px;
+  }
+  
+  #mortgageForm label {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .half-spacing {
+    line-height: 0.5em;
+  }
+  
+  .input-group {
+    flex-basis: calc(25% - 1rem);
+    margin-bottom: 1rem;
+  }
+  
+  .input-group.full-width {
+    flex-basis: 100%;
+  }
+  
+  .input-group input[type="number"],
+  .input-group input[type="text"] {
+    width: 100%;
+  }
+  
+  button {
+    width: 100%;
+    padding: 4px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .input-group {
+      flex-basis: 100%;
+    }
+  }
+  
+  #MortgageCalc {
+    text-align: center;
+  }
+  
