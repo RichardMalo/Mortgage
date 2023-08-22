@@ -4,7 +4,7 @@ This is a basic mortgage amortization table calculator to assist a user to visua
 
 ## Entry options:
 
-## V1 UI:
+### V1 UI:
 ![UI v1](HTMLUI.png)
 
 Principal: Put in the Loan amount. i.e. 1000000.
@@ -16,6 +16,9 @@ Term (Years) : How long is the term you wish to display on screen. i.e. 5 years.
 Interest rate (Percent) : Put in what the interest rate is. i.e. 6.00%
 
 Calculate Mortgage Button : Press, once the above is filled in to generate the Mortgage Breakdown and Cumulative Payments vs Remaining Balance graphs.
+
+### Graph Output:
+![Graph Output](Graphs.png)
 
 ### RUN LOCALLY
 
