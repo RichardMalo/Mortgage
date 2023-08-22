@@ -4,6 +4,9 @@ This is a basic mortgage amortization table calculator to assist a user to visua
 
 ## Entry options:
 
+## V1 UI:
+![UI v1](HTMLUI.png)
+
 Principal: Put in the Loan amount. i.e. 1000000.
 
 Amortization (Years) : How many years is the total length of the loan. i.e. 30 years.
